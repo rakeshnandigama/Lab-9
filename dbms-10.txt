@@ -1,0 +1,168 @@
+--Rakesh Nandigama  04/15/2014--
+
+
+
+1. CREATE STATEMENTS FOR ALL THE TABLES SHOWN IN THE ENTITY RELEATIONSHIP DIAGRAM
+--------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE persons (
+  pid      char(4) not null,
+  name     text,
+  designation text,
+  age numeric,
+ primary key(pid)
+);
+
+CREATE TABLE engineers (
+  pid      char(4) not null,
+  name     text,
+  degree     text,
+  age numeric,
+ primary key(pid)
+);
+
+CREATE TABLE fcoperators (
+  pid      char(4) not null,
+  name     text,
+  age numeric,
+  drink text,
+ primary key(pid)
+);
+
+CREATE TABLE astronauts (
+  pid      char(4) not null,
+  name     text,
+  experience text,
+  age numeric,
+ primary key(pid)
+);
+
+CREATE TABLE suppliers (
+  pid      char(4) not null,
+  name     text,
+  address text,
+ primary key(pid)
+);
+
+CREATE TABLE crafts (
+  cid      char(4) not null,
+  name     text,
+  fueltype text,
+  weight numeric,
+  capacity text,
+ primary key(cid)
+);
+
+CREATE TABLE parts (
+  partid      char(4) not null,
+  name     text,
+  type     text,
+ primary key(partid)
+);
+
+CREATE TABLE systems (
+  sid      char(4) not null,
+  name     text,
+  model    numeric,
+  performance text,
+  type text,
+ primary key(sid)
+);
+
+CREATE TABLE crew (
+pid char(4) not null,
+cid char(4) not null references crafts(cid),
+primary key (pid)
+);
+
+CREATE TABLE catalogs (
+pid char(4) not null,
+partid char(4) not null references part(partid),
+primary key (pid)
+);
+
+CREATE TABLE syscraft (
+cid char(4) not null,
+sid char(4) not null references systems(sid),
+primary key (cid)
+);
+
+CREATE TABLE systemparts (
+partid char(4) not null,
+sid char(4) not null references systems(sid),
+primary key (partid)
+);
+
+
+2. INSERT STATEMENTS FOR ALL THE TABLES LISTED ABOVE
+------------------------------------------------------------------------------
+
+PERSONS TABLE
+-----------------------
+
+INSERT INTO persons( pid, name, designation, age )
+  VALUES('p001', 'Rakesh Sharma', 'aeronautical', 65);
+
+INSERT INTO persons( pid, name, designation, age )
+  VALUES('p002', 'Neil Amstrong', 'aeronautical', 57);
+
+INSERT INTO persons( pid, name, designation, age )
+  VALUES('p003', 'kalpana chawla', 'aeronautical', 36);
+
+INSERT INTO persons( pid, name, designation, age )
+  VALUES('p004', ' Yuri Gagarin', 'aeronautical', 38);
+
+INSERT INTO persons( pid, name, designation, age )
+  VALUES('p005', ' virat', 'computer engineer', 28);
+
+INSERT INTO persons( pid, name, designation, age )
+  VALUES('p006', ' kohli', 'Asst. Engineer', 30);
+
+ENGINEERS TABLE
+-----------------------
+
+INSERT INTO engineers( pid, name, designation, age )
+  VALUES('p001', 'Rakesh Sharma', 'aeronautical', 65);
+
+INSERT INTO engineers( pid, name, designation, age )
+  VALUES('p002', 'Neil Amstrong', 'aeronautical', 57);
+
+SUPPLIERS
+-----------------------
+
+INSERT INTO suppliers( pid, name, designation, age )
+  VALUES('p005', ' virat', 'india');
+
+INSERT INTO suppliers( pid, name, designation, age )
+  VALUES('p006', ' kohli', 'america');
+
+ASTRONAUTS
+-------------------------
+
+INSERT INTO astronauts( pid, name, designation, age )
+  VALUES('p002', 'Neil Amstrong', 'aeronautical', 57);
+
+INSERT INTO astronauts( pid, name, designation, age )
+  VALUES('p003', 'kalpana chawla', 'aeronautical', 36);
+
+FCOPERATORS
+-----------------------
+INSERT INTO fcoperators( pid, name, designation, age )
+  VALUES('p002', 'Neil Amstrong', 'aeronautical', 57);
+
+INSERT INTO fcoperators( pid, name, designation, age )
+  VALUES('p001', 'Rakesh Sharma', 'aeronautical', 65);
+
+CRAFTS
+--------------------------
+INSERT INTO crafts( cid, name, fueltype,weight,capacity )
+  VALUES('c001', 'Apolo-15', 'Hydrogen', 300kg,12);
+
+INSERT INTO crafts( cid, name, fueltype,weight,capacity )
+  VALUES('c002', 'Apolo-17', 'Hydrogen', 400kg,15);
+
+
+SYSTEMS
+---------------------------
+INSERT INTO systems( sid, name, model,performane,type )
+  VALUES('s001', 'subcooling', '2012', good,12,'environmental sub sustem');
